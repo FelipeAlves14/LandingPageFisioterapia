@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #191a15;
+  --golden: #f5e512;
+  --option-color: #a6a6a6;
+  --blur: #707070;
+  --font-family: "Inter", sans-serif;
+}
