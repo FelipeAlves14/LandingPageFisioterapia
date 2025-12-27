@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
 
 interface ButtonProps {
-  anchor: string;
+  anchor?: string;
   className?: string;
   contact?: boolean;
   children?: ReactNode;
+  onClick?: () => void;
 }
 
 export default function Button(props: ButtonProps) {
@@ -13,8 +14,16 @@ export default function Button(props: ButtonProps) {
     className,
     contact = false,
     children = "Entre em contato",
+    onClick,
   } = props;
-  return (
+  return anchor === undefined ? (
+    <button
+      className={`bg-(--golden) cursor-pointer m-4 px-4 py-2 rounded-full ${className}`}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  ) : (
     <a
       className={`${
         contact && "bg-(--golden) cursor-pointer m-4 px-4 py-2 rounded-full"
