@@ -2,10 +2,12 @@
 
 :root {
   --bg: #191a15;
+  --bg-footer: #222222;
   --bg-mulligan: #282828;
   --blur: #444444;
   --font-family: "Inter", sans-serif;
   --golden: #f5e512;
+  --golden-icon: #D4AF37;
   --media-color: #c8c1aa;
   --option-color: #a6a6a6;
 }

@@ -47,7 +47,7 @@ export default function Carousel() {
       <Card servico={servicos[mod(index + 1)]} />
       <Button
         onClick={() => {
-          setIndex((index + 1) % servicos.length);
+          setIndex(mod(index + 1));
         }}
       >
         <FaChevronRight />

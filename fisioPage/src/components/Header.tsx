@@ -12,10 +12,7 @@ export default function Header() {
         <Button anchor="#localizacoes">Localizações</Button>
       </div>
       <div className="text-right w-full">
-        <Button
-          anchor="https://wa.me/5584921604246?text=Olá,+gostaria+de+iniciar+um+atendimento!"
-          contact
-        />
+        <Button contact />
       </div>
     </header>
   );
