@@ -1,4 +1,5 @@
 import type { Servico } from "..";
+import formacoes from "../../../assets/formacoes.png";
 
 interface CardProps {
   primal?: boolean;
@@ -31,7 +32,7 @@ export default function Card(props: Readonly<CardProps>) {
       <img
         className={primal ? "rounded-t-full" : ""}
         alt="Imagem do serviço prestado"
-        src="./formacoes.png"
+        src={formacoes}
       />
     </div>
   );

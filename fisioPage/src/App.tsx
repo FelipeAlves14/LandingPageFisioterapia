@@ -5,6 +5,12 @@ import Header from "./components/Header";
 import { FaCircleCheck, FaLightbulb, FaLocationDot } from "react-icons/fa6";
 import { SiInstagram, SiWhatsapp } from "react-icons/si";
 import Carousel from "./components/Carousel";
+import fisioFoto from "./assets/fisio-foto.png";
+import formacoesImagem from "./assets/formacoes.png";
+import fundoDireita from "./assets/fundo-direita.png";
+import fundoEsquerda from "./assets/fundo-esquerda.png";
+import fundoRodape from "./assets/fundo-rodape.png";
+import marca from "./assets/marca.png";
 
 interface BeneficioMulligan {
   titulo: string;
@@ -86,7 +92,7 @@ function App() {
               <Button contact />
             </div>
           </div>
-          <img src="/fisio-foto.png" alt="Foto do fisioterapeuta" />
+          <img src={fisioFoto} alt="Foto do fisioterapeuta" />
         </div>
         <div>
           <h1 className="font-bold mb-14 text-center text-4xl text-(--golden)">
@@ -120,7 +126,7 @@ function App() {
               ))}
             </ul>
           </div>
-          <img src="/formacoes.png" alt="Formações e Experiências" />
+          <img src={formacoesImagem} alt="Formações e Experiências" />
         </div>
       </div>
       <div className="bg-(--bg-mulligan)">
@@ -176,18 +182,10 @@ function App() {
         </div>
         <div className="relative flex text-(--golden)">
           <div className="absolute right-0 -bottom-20">
-            <img
-              src="./fundo-direita.png"
-              alt="fundo-rodape"
-              className="block"
-            />
+            <img src={fundoDireita} alt="fundo-rodape" className="block" />
           </div>
           <div className="absolute left-0 -bottom-100">
-            <img
-              src="./fundo-esquerda.png"
-              alt="fundo-rodape"
-              className="block"
-            />
+            <img src={fundoEsquerda} alt="fundo-rodape" className="block" />
           </div>
           <div className="flex mx-28">
             {localizacoes.map<ReactNode>(({ cidade, locais }: Localizacao) => (
@@ -212,7 +210,7 @@ function App() {
         <div>
           <div className="relative flex gap-60">
             <div className="ml-14 py-9">
-              <img src="./marca.png" alt="marca gráfica maior" />
+              <img src={marca} alt="marca gráfica maior" />
               <p className="mt-5 text-(--option-color) text-[18px]">
                 A maior variedade de serviços fisioterapêuticos para você.
               </p>
@@ -233,11 +231,7 @@ function App() {
               </p>
             </div>
             <div className="absolute right-0 bottom-0">
-              <img
-                src="./fundo-rodape.png"
-                alt="fundo-rodape"
-                className="block"
-              />
+              <img src={fundoRodape} alt="fundo-rodape" className="block" />
             </div>
           </div>
         </div>
