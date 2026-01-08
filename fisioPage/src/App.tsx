@@ -12,17 +12,17 @@ import fundoEsquerda from "./assets/fundo-esquerda.png";
 import fundoRodape from "./assets/fundo-rodape.png";
 import marca from "./assets/marca.png";
 
-interface BeneficioMulligan {
-  titulo: string;
-  conteudo: string;
-}
-
-interface Localizacao {
-  cidade: string;
-  locais: string[];
-}
-
 function App() {
+  interface BeneficioMulligan {
+    titulo: string;
+    conteudo: string;
+  }
+
+  interface Localizacao {
+    cidade: string;
+    locais: string[];
+  }
+
   const beneficiosMulligan: BeneficioMulligan[] = [
     {
       titulo: "Alivia da dor",
