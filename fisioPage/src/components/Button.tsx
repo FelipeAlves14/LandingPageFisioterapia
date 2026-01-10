@@ -19,7 +19,7 @@ export default function Button(props: ButtonProps) {
   return onClick === undefined ? (
     <a
       className={`${
-        contact && "bg-(--golden) cursor-pointer m-4 px-4 py-2 rounded-full"
+        contact && "bg-(--golden) cursor-pointer m-2 sm:m-4 px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm"
       } ${className}`}
       href={anchor}
       target={anchor.startsWith("#") ? undefined : "_blank"}
@@ -28,7 +28,7 @@ export default function Button(props: ButtonProps) {
     </a>
   ) : (
     <button
-      className={`bg-(--golden) cursor-pointer m-4 px-4 py-2 rounded-full ${className}`}
+      className={`bg-(--golden) cursor-pointer m-2 sm:m-4 px-3 sm:px-4 py-1 sm:py-2 rounded-full text-xs sm:text-sm ${className}`}
       onClick={onClick}
     >
       {children}

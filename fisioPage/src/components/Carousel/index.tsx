@@ -34,18 +34,24 @@ export default function Carousel() {
     [servicos.length]
   );
   return (
-    <div className="flex items-center justify-between mt-16">
+    <div className="flex flex-col md:flex-row items-center justify-center md:justify-between mt-8 md:mt-16 gap-4 md:gap-0 px-4">
       <Button
+        className="text-2xl md:text-base"
         onClick={() => {
           setIndex(mod(index - 1));
         }}
       >
         <FaChevronLeft />
       </Button>
-      <Card servico={servicos[mod(index - 1)]} />
+      <div className="hidden md:block">
+        <Card servico={servicos[mod(index - 1)]} />
+      </div>
       <Card primal servico={servicos[mod(index)]} />
-      <Card servico={servicos[mod(index + 1)]} />
+      <div className="hidden md:block">
+        <Card servico={servicos[mod(index + 1)]} />
+      </div>
       <Button
+        className="text-2xl md:text-base"
         onClick={() => {
           setIndex(mod(index + 1));
         }}
