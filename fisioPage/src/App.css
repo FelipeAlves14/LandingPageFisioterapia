@@ -1,0 +1,93 @@
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(26px) scale(0.99);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.carousel-enter-right {
+  animation: carouselEnterRight 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.carousel-enter-left {
+  animation: carouselEnterLeft 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.carousel-side-enter-right {
+  animation: carouselSideEnterRight 0.4s ease;
+}
+
+.carousel-side-enter-left {
+  animation: carouselSideEnterLeft 0.4s ease;
+}
+
+@keyframes carouselEnterRight {
+  0% {
+    opacity: 0;
+    transform: translateX(32px) scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes carouselEnterLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-32px) scale(0.98);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes carouselSideEnterRight {
+  0% {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes carouselSideEnterLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll,
+  .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .carousel-enter-right,
+  .carousel-enter-left,
+  .carousel-side-enter-right,
+  .carousel-side-enter-left {
+    animation: none;
+  }
+}

@@ -21,8 +21,11 @@ export interface Servico {
   foto: string;
 }
 
+type Direcao = "esquerda" | "direita";
+
 export default function Carousel() {
   const [index, setIndex] = useState<number>(0);
+  const [direcao, setDirecao] = useState<Direcao>("direita");
   const servicos: Servico[] = [
     {
       titulo: "Agulhamento a Seco + Laserterapia",
@@ -109,23 +112,44 @@ export default function Carousel() {
       <Button
         className="text-2xl md:text-base"
         onClick={() => {
+          setDirecao("esquerda");
           setIndex(mod(index - 1));
         }}
       >
         <FaChevronLeft />
       </Button>
-      <div className="hidden md:block">
+      <div
+        key={`left-${mod(index - 1)}`}
+        className={`hidden md:block ${
+          direcao === "direita"
+            ? "carousel-side-enter-right"
+            : "carousel-side-enter-left"
+        }`}
+      >
         <Card servico={servicos[mod(index - 1)]} />
       </div>
-      <div>
+      <div
+        key={`center-${index}`}
+        className={
+          direcao === "direita" ? "carousel-enter-right" : "carousel-enter-left"
+        }
+      >
         <Card primal servico={servicos[mod(index)]} />
       </div>
-      <div className="hidden md:block">
+      <div
+        key={`right-${mod(index + 1)}`}
+        className={`hidden md:block ${
+          direcao === "direita"
+            ? "carousel-side-enter-right"
+            : "carousel-side-enter-left"
+        }`}
+      >
         <Card servico={servicos[mod(index + 1)]} />
       </div>
       <Button
         className="text-2xl md:text-base"
         onClick={() => {
+          setDirecao("direita");
           setIndex(mod(index + 1));
         }}
       >

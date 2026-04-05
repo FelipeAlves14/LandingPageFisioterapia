@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import "./App.css";
 import Button from "./components/Button";
 import Header from "./components/Header";
@@ -73,11 +73,42 @@ function App() {
     },
   ];
 
+  useEffect(() => {
+    const elementosAnimados: NodeListOf<HTMLElement> =
+      document.querySelectorAll<HTMLElement>(".reveal-on-scroll");
+
+    const observer = new IntersectionObserver(
+      (entries: IntersectionObserverEntry[]) => {
+        entries.forEach(
+          ({ isIntersecting, target }: IntersectionObserverEntry) => {
+            if (isIntersecting) {
+              target.classList.add("is-visible");
+              observer.unobserve(target);
+            }
+          },
+        );
+      },
+      {
+        root: null,
+        threshold: 0.2,
+        rootMargin: "0px 0px -50px 0px",
+      },
+    );
+
+    elementosAnimados.forEach((elemento: HTMLElement) => {
+      observer.observe(elemento);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <>
       <Header />
       <div className="md:mx-28 mx-4 sm:mx-8">
-        <div className="flex flex-col gap-8 justify-evenly md:flex-row md:gap-0">
+        <div className="flex flex-col gap-8 justify-evenly md:flex-row md:gap-0 reveal-on-scroll">
           <div className="md:w-auto w-full">
             <h1 className="font-bold md:text-8xl not-sm:text-center sm:text-6xl text-4xl text-(--golden) w-full">
               Marque seu atendimento
@@ -98,7 +129,7 @@ function App() {
             className="max-w-sm md:max-w-none md:w-auto w-full"
           />
         </div>
-        <div>
+        <div className="reveal-on-scroll">
           <h1 className="font-bold mb-8 sm:mb-14 sm:text-4xl text-center text-2xl text-(--golden)">
             Entre em contato pelas minhas redes sociais
           </h1>
@@ -116,7 +147,7 @@ function App() {
             </Button>
           </div>
         </div>
-        <div className="flex flex-col gap-8 justify-between md:flex-row md:gap-0 mt-16 sm:mt-28">
+        <div className="flex flex-col gap-8 justify-between md:flex-row md:gap-0 mt-16 sm:mt-28 reveal-on-scroll">
           <div id="formacoes" className="md:w-auto w-full">
             <h1 className="font-bold sm:text-5xl text-3xl text-(--golden) w-full">
               Minhas Formações e Experiências
@@ -139,7 +170,7 @@ function App() {
           />
         </div>
       </div>
-      <div className="bg-(--bg-mulligan)">
+      <div className="bg-(--bg-mulligan) reveal-on-scroll">
         <div className="flex flex-col gap-8 justify-between md:flex-row md:gap-0 md:px-32 mt-14 px-4 py-8 sm:px-8 sm:py-16">
           <div className="md:w-auto w-full">
             <h1 className="font-semibold sm:text-5xl text-3xl text-(--golden) w-full">
@@ -163,12 +194,15 @@ function App() {
                     {conteudo}
                   </p>
                 </>
-              )
+              ),
             )}
           </div>
         </div>
       </div>
-      <div className="mt-16 px-4 sm:mt-32 text-center" id="servicos">
+      <div
+        className="mt-16 px-4 sm:mt-32 text-center reveal-on-scroll"
+        id="servicos"
+      >
         <h1 className="font-bold sm:text-5xl text-3xl text-(--golden)">
           Conheça meus serviços
         </h1>
@@ -177,10 +211,7 @@ function App() {
         </p>
         <Carousel />
       </div>
-      <div
-        className="mt-16 px-4 sm:mt-28"
-        id="localizacoes"
-      >
+      <div className="mt-16 px-4 sm:mt-28 reveal-on-scroll" id="localizacoes">
         <div className="flex flex-col gap-4 items-start justify-between md:mx-28 mx-0 sm:flex-row sm:gap-0 sm:items-end sm:mx-8">
           <div className="flex flex-col gap-2 items-start sm:flex-row sm:gap-5 sm:items-end">
             <h1 className="font-bold sm:text-5xl text-3xl text-(--golden)">
@@ -225,7 +256,7 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="bg-(--bg-footer) mt-24 sm:mt-96 text-(--golden)">
+      <div className="bg-(--bg-footer) mt-24 sm:mt-96 text-(--golden) reveal-on-scroll">
         <div>
           <div className="flex flex-col gap-8 relative sm:flex-row sm:gap-60">
             <div className="mx-4 py-6 sm:mx-14 sm:py-9">
